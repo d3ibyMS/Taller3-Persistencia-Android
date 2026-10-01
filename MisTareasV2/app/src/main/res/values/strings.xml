@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Mis Tareas</string>
+    <string name="subtitulo_principal">Almacenamiento local activo</string>
+    <string name="empty_state">Aún no tienes tareas.\nCrea la primera para empezar a organizarte.</string>
+    <string name="empty_state_boton">Crear primera tarea</string>
+
+    <string name="resumen_contador">Pendientes: %1$d | Completadas: %2$d</string>
+    <string name="indicador_datos_locales">Datos guardados localmente</string>
+
+    <string name="diagnostico_titulo">ContentProvider activo</string>
+    <string name="diagnostico_subtitulo">Disponible para consultas externas autorizadas (App B)</string>
+
+    <string name="hint_titulo">Título</string>
+    <string name="hint_descripcion">Descripción (opcional)</string>
+    <string name="label_completada">Tarea completada</string>
+    <string name="btn_guardar">GUARDAR</string>
+    <string name="btn_cancelar">CANCELAR</string>
+
+    <string name="titulo_nueva_tarea">Nueva tarea</string>
+    <string name="titulo_editar_tarea">Editar tarea</string>
+    <string name="titulo_requerido">El título es obligatorio</string>
+
+    <string name="creada_prefijo">Creada: %1$s</string>
+    <string name="accion_eliminar">Eliminar tarea</string>
+    <string name="dialogo_eliminar_titulo">Eliminar tarea</string>
+    <string name="dialogo_eliminar_mensaje">¿Seguro que deseas eliminar \"%1$s\"?</string>
+
+    <string name="add_tarea_content_desc">Agregar tarea</string>
+</resources>

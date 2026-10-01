@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="background_app">#F5F6FA</color>
+    <color name="blue_primary">#1565C0</color>
+    <color name="blue_primary_dark">#0D47A1</color>
+    <color name="blue_chip_bg">#E3F2FD</color>
+    <color name="blue_chip_text">#1565C0</color>
+    <color name="green_chip_bg">#E8F5E9</color>
+    <color name="green_chip_text">#2E7D32</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#616161</color>
+</resources>
