@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Debe coincidir EXACTAMENTE con el nombre del permiso readPermission
-         declarado en el <provider> de App A. -->
+    <!--
+         Debe coincidir EXACTAMENTE con el nombre del permiso readPermission
+         declarado en el <provider> de App A.
+    -->
     <uses-permission android:name="com.example.mistareas.permission.READ_TASKS" />
 
-    <!-- IMPORTANTE (Android 11 / API 30 en adelante):
+    <!--
+         IMPORTANTE (Android 11 / API 30 en adelante):
          Por defecto, una app no puede "ver" otras apps instaladas ni sus
          Providers, aunque tenga el permiso correcto. Hay que declarar
          explícitamente qué Provider externo se va a consultar, o
-         contentResolver.query() devolverá null como si App A no existiera. -->
+         contentResolver.query() devolverá null como si App A no existiera.
+    -->
     <queries>
         <provider android:authorities="com.example.mistareas.provider" />
     </queries>
@@ -21,13 +25,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
         <activity
-            android:name="com.example.appb.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SeguridadActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

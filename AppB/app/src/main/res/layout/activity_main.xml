@@ -104,5 +104,17 @@
             android:clipToPadding="false"
             android:paddingBottom="8dp" />
 
+        <!-- Botón agregado para el Punto 4 de Seguridad -->
+        <Button
+            android:id="@+id/btnIrSeguridad"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:text="Ir a Punto 4 (Seguridad)"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/bg_button_primary" />
+
     </LinearLayout>
 </LinearLayout>

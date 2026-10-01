@@ -1,7 +1,11 @@
 package com.example.appb
 
+import android.content.Intent
+import android.database.ContentObserver
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -46,6 +50,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnConsultar: Button
     private lateinit var btnActualizar: Button
 
+    // Declaración del ContentObserver para actualizaciones automáticas
+    private lateinit var tareaObserver: ContentObserver
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -69,16 +76,41 @@ class MainActivity : AppCompatActivity() {
 
         btnConsultar.setOnClickListener { consultarTareas() }
         btnActualizar.setOnClickListener { consultarTareas() }
+
+        // Lógica agregada para navegar a la pantalla del Punto 4 (Seguridad)
+        val btnIrSeguridad = findViewById<Button>(R.id.btnIrSeguridad)
+        btnIrSeguridad.setOnClickListener {
+            startActivity(Intent(this, SeguridadActivity::class.java))
+        }
+
+        // Inicialización del ContentObserver
+        tareaObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
+            override fun onChange(selfChange: Boolean) {
+                super.onChange(selfChange)
+                // Se dispara automáticamente cada vez que App A notifica un cambio
+                consultarTareas()
+            }
+        }
+    }
+
+    // Registrar el Observer cuando la app se vuelve visible
+    override fun onStart() {
+        super.onStart()
+        contentResolver.registerContentObserver(CONTENT_URI, true, tareaObserver)
+        // Llama a consultarTareas automáticamente al iniciar
+        consultarTareas()
+    }
+
+    // Desvincular el Observer cuando la app pasa a segundo plano para ahorrar recursos
+    override fun onStop() {
+        super.onStop()
+        contentResolver.unregisterContentObserver(tareaObserver)
     }
 
     /**
      * Este es el método central del Punto 3 para App B: usa ContentResolver
      * para pedirle los datos al ContentProvider de App A, manejando los tres
-     * escenarios que pide la guía de pruebas:
-     *   1. Acceso autorizado -> se muestran las tareas.
-     *   2. Permiso denegado (SecurityException) -> mensaje controlado.
-     *   3. Provider ausente / App A no instalada -> mensaje controlado.
-     * En ningún caso la app debe cerrarse (crash) por estos motivos.
+     * escenarios que pide la guía de pruebas.
      */
     private fun consultarTareas() {
         mostrarCargando()
@@ -109,9 +141,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (cursor == null) {
-            // contentResolver.query() devuelve null cuando no encuentra el
-            // Provider (por ejemplo, App A no está instalada, o falta el
-            // bloque <queries> de visibilidad de paquetes en este Manifest).
             mostrarError(
                 "No se pudo contactar el ContentProvider de App A. " +
                         "Verifica que App A esté instalada en este dispositivo."

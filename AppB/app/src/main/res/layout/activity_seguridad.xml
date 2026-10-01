@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@color/background_app">
+
+    <!-- Encabezado consistente con la aplicación -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_header"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Punto 4: Seguridad"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Cifrado local vs. Almacenamiento externo"
+            android:textColor="#CCE0F7"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Tarjeta limpia para la entrada de texto -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_summary_card"
+            android:elevation="2dp"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Escribe un dato confidencial (Ej: Clave bancaria):"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                android:layout_marginBottom="12dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/etNotaSecreta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingresa el texto aquí..."
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:textColor="#000000"
+                android:textColorHint="#757575"
+                android:padding="8dp"
+                android:gravity="top|start"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Botones estilizados -->
+        <Button
+            android:id="@+id/btnGuardarCifrado"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="1. Guardar en Interno (Cifrado)"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/bg_button_primary"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnGuardarVulnerable"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="2. Guardar en Externo (Vulnerable)"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:backgroundTint="#D32F2F"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:id="@+id/tvResultadoSeguridad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue_primary"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:padding="8dp"/>
+
+    </LinearLayout>
+</LinearLayout>
